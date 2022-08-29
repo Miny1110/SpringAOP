@@ -13,12 +13,21 @@
 	<description>Example configuration to get you started.</description>
 
 	<context:component-scan base-package="com.exe.aop" />
+	
+	<!-- aop를 어노테이션으로 사용하겠다 -->
+	<aop:aspectj-autoproxy/>
 
-	<!-- execution(메소드접근지정자 반환값 패키지.클래스.메소드명(인수) -->
+
+
+	<!-- execution(메소드접근지정자 반환값 패키지.클래스.메소드명(인수)
 	<bean id="beforeAdvice" class="com.exe.aop.MyBeforeAdvice"/>
 	<bean id="afterAdvice" class="com.exe.aop.MyAfterAdvice"/>
+	<bean id="aroundAdvice" class="com.exe.aop.MyAroundAdvice"></bean>
+	<bean id="afterReturnAdvice" class="com.exe.aop.MyAfterReturnAdvice"></bean>
+	<bean id="afterThrowAdvice" class="com.exe.aop.MyAfterThrowingAdvice"></bean>
 	
 	<aop:config>
+	
 		<aop:aspect ref="beforeAdvice">
 			<aop:pointcut id="beforePointcut" 
 				expression="execution(public void com..aop.*.*(..))"/>
@@ -28,10 +37,32 @@
 
 		<aop:aspect ref="afterAdvice">
 			<aop:pointcut id="afterPointcut"
-				expression="execution(public void com..aop.*.*(..))" />
+				expression="execution(public void com..aop.*.*Some*2(..))" />
 			<aop:after method="afterMethodCall"
 				pointcut-ref="afterPointcut"/>
 		</aop:aspect>
-	</aop:config>
+		
+		<aop:aspect ref="aroundAdvice">
+			<aop:pointcut id="aroundPointcut"
+				expression="execution(public void com..aop.*.*1(..))" />
+			<aop:around method="aroundMethodCall"
+				pointcut-ref="aroundPointcut"/>
+		</aop:aspect>
 
+		<aop:aspect ref="afterReturnAdvice">
+			<aop:pointcut id="afterReturnPointcut"
+				expression="execution(public void com..aop.*.*(..))" />
+			<aop:after-returning method="afterReturnMethodCall"
+				pointcut-ref="afterReturnPointcut"/>
+		</aop:aspect>
+		
+		<aop:aspect ref="afterThrowAdvice">
+			<aop:pointcut id="afterThrowPointcut"
+				expression="execution(public void com..aop.*.*(..))" />
+			<aop:after-throwing method="afterThrowMethodCall"
+				pointcut-ref="afterThrowPointcut"/>
+		</aop:aspect>		
+		
+	</aop:config>
+ -->
 </beans>

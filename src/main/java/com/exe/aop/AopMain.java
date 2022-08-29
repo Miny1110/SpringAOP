@@ -12,14 +12,14 @@ public class AopMain {
 		TargetA ta = (TargetA)context.getBean("targetA");
 		
 		ta.doSomething1();
-		ta.doAnother2();
+		ta.doSomething2();
 		ta.doAnother1();
 		ta.doAnother2();
 		
 		TargetB tb = (TargetB)context.getBean("targetB");
 		
 		tb.doSomething1();
-		tb.doAnother2();
+		tb.doSomething2();
 		tb.doAnother1();
 		tb.doAnother2();
 		
